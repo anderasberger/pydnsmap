@@ -1,0 +1,30 @@
+INSTALL
+-------
+
+The following python modules are required:
+numpy, scipy, netaddr, python-levenshtein
+
+(to be extended?)
+
+Run the protocol buffer compiler to generate the protobuf Python modules from
+the schema definition:
+protoc --python_out=. ticket_dns.proto
+
+Download the latest AsNum database from http://www.maxmind.com/en/asnum and
+put it in the /data directory. An older version should be already there,
+overwrite it.
+
+RUNNING
+-------
+1. Adapt config.py (see inline comments)
+
+2. Run 'python pydnsmap.py'. This should create a subdirectory (as specified in
+config.py) where the following files are written: (i) a log file (by default,
+it's called pydnsmap.log); (ii) a file called 'suspicious.txt', containing all
+suspicious domain-ip mappings that were found; (iii) a file that contains the
+final DNSMap in Python's pickle format. this is written just before the tool
+terminates, unless this has been deactivated in config.py
+
+3. Run 'python dnsmapGUI.py'. This allows you to load suspicious.txt, filter
+the records therein, explore the resulting mapping graph, and export the final
+list of malicious domains and IPs to a text file.

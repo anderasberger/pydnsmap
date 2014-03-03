@@ -1,0 +1,15 @@
+^de\.pool\.ntp\.arcor-ip\.net$
+^time\.mk\.cc$
+^[\w\.-]+\.nyud\.net$
+^[\w\.-]+\.nyucd\.net$
+^[\w\.-]+\.ntp\.org$
+^[\w\.-]+\.files\.wordpress\.com$
+^liveupdate\.symantecliveupdate\.com$
+^grey-area\.mailhostingserver\.com$
+^cf\.www\.directadserver\.com$
+^rsync\.europe\.gentoo\.org$
+^safebrowsing-cache\.google\.com$
+^ntp\.pch\.at$
+^cf\.www\.forwardizm\.com$
+^pool\.sks-keyservers\.net$
+^www\.apple\.com$
