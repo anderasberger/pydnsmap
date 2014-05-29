@@ -1,5 +1,4 @@
-ABOUT
------
+# ABOUT
 
 Pydnsmap analyzes relations (mappings) between *queried FQDN* and *IP
 addresses* hosting them for detecting malicious Internet activity. It uses DNS
@@ -11,8 +10,7 @@ first analysis stage (see config.py). The definition of 'suspicious community'
 depends on the analysis parameters set via the (simple) analysis GUI (see
 dnsmapGUI.py).
 
-INSTALL
--------
+# INSTALL
 
 NOTE: these tools have been exclusively tested on Linux using Python 2.7.
 
@@ -22,8 +20,8 @@ numpy, scipy, netaddr, python-levenshtein
 Download the latest AsNum database (GeoIPAЅNum.dat) from
 http://www.maxmind.com/en/asnum and save it to the /data directory. 
 
-RUNNING
--------
+# RUNNING
+
 1. Adapt config.py (see inline comments). 
 
 By default, pydnsmap reads DNS data from a FIFO. Create a FIFO using 'mkfifo
