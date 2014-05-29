@@ -1,3 +1,29 @@
+# Copyright (c) 2014, FTW Forschungszentrum Telekommunikation Wien
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# # Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+# # Redistributions in binary form must reproduce the above copyright
+# notice, this list of conditions and the following disclaimer in the
+# documentation and/or other materials provided with the distribution.
+# # Neither the name of FTW nor the names of its contributors
+# may be used to endorse or promote products derived from this software
+# without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL FTW
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+# EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
+
 import os
 import time
 import logging
@@ -5,15 +31,13 @@ from dnsmapIO import (INPUTMODE_FIFO, INPUTMODE_PROTOBUF, INPUTMODE_PCAP_FILE,
     INPUTMODE_PCAP_IF)
 
 # FIXME, debug only
-import faulthandler
-faulthandler.enable()
+#import faulthandler
+#faulthandler.enable()
 
 """
 create working directory
 """
-# FIXME
 workingDir='pydnsmap_'+str(time.time())
-#workingDir='/tmp/pydnsmap_'+str(time.time())
 os.mkdir(workingDir)
 workingDir=os.path.abspath(workingDir)
 
@@ -30,22 +54,16 @@ logging.basicConfig(filename=os.path.join(workingDir, 'pydnsmap.log'),
 the input source: can be either a file, or a network interface (e.g., eth0);
 depends on the inputMode, see below
 """
-#inputSource='/mnt/2/dns/dns_out_2010-11-22_2010-12-05.txt.protobuf'
-#inputSource='/home/andreas//projects/demons/wp5/maldomains/data_traces/dns_sample_from_1321372800.protobuf'
-#inputSource='/home/andreas/projects/demons/wp5/maldomains/data_traces/dns_out_2010-11-22_2010-12-05.txt.protobuf_filtered_3600s.gz'
-#inputSource='/home/andreas/projects/demons/wp5/maldomains/data_traces/dns_tickets_2011-11-15_to_2011-11-21_filtered_3600s.gz'
-#inputSource='/home/andreas/projects/demons/wp5/maldomains/data_traces/TID/TID_anonymized_traces.pcap'
-#inputSource='/mnt/2/dns/dns_out_2010-11-22_2010-12-05.txt.protobuf_filtered_3600s.gz'
+#inputSource='/path/to/file.txt'
+#inputSource='/path/to/file.gz'
 inputSource='fifo'
 
 """
 the input mode to be used.
 INPUTMODE_FIFO: read from text input
-INPUTMODE_PROTOBUF: read proprietary protocol buffer format
 INPUTMODE_PCAP_FILE: read from PCAP file
 INPUTMODE_PCAP_IF: read from PCAP network interface
 """
-#inputMode=INPUTMODE_PROTOBUF
 inputMode=INPUTMODE_FIFO
 
 """
@@ -61,9 +79,10 @@ at the end
 outfilename=os.path.join(workingDir, 'dnsmap.txt')
 
 """
+load a previously dumped DNSMap from a file, for initialization before starting
+to process the data
 """
-#dnsmapToLoad=None
-dnsmapToLoad='pydnsmap_1372841721.72/dnsmap.txt'
+dnsmapToLoad=None
 
 """
 dump the processed DNS mappings to a SQLite database file
